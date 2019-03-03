@@ -1,0 +1,9 @@
+{
+  "name": "weatherfeeder",
+  "description": "Feeding temperature using Node.js, socket.io, and flot.js",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "socket.io": "latest"
+  }
+}

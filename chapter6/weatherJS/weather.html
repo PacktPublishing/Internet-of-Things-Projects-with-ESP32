@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Weather Station</title>
+    <script language="javascript" type="text/javascript" src="/flot/jquery.js"></script>
+    <script language="javascript" type="text/javascript" src="/flot/jquery.flot.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script language="javascript" type="text/javascript">
+        var socket = io.connect();
+        var items = [];
+        var counter = 0;
+
+        socket.on('data', function (data) {
+            items.push([counter, data]);
+            counter = counter + 1;
+            if (items.length > 20)
+                items.shift();
+            $.plot($("#placeholder"), [items]);
+        });
+    </script>
+
+</head>
+<body>
+<h1>Demo Weather Station</h1>
+<p>Real-time temperature monitoring</p>
+
+<div id="placeholder" style="width:600px;height:300px;"></div>
+</body>
+</html>
